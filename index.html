@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Campaign Timeline</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+
+    :root {
+  --primary: #a78645;
+  --secondary: #eeece1;
+  --tertiary: #776262;
+  --quaternary: #a99163;
+  --white: #ffffff;
+  --black: #333333;
+}
+
+body {
+  direction: rtl;
+  font-family: Arial, sans-serif;
+  background-color: var(--secondary);
+  color: var(--black);
+  margin: 0;
+  padding: 24px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  color: var(--primary);
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: var(--tertiary);
+  font-size: 16px;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  flex: 1 1 300px;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h2 {
+  color: var(--primary);
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.summary-card .label {
+  font-weight: bold;
+  color: var(--tertiary);
+}
+
+.timeline {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 24px 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+}
+
+.timeline h2 {
+  color: var(--primary);
+  font-size: 20px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.timeline-line {
+  position: relative;
+  height: 4px;
+  background-color: var(--primary);
+  margin-bottom: 60px;
+}
+
+.timeline-points {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-point {
+  text-align: center;
+  width: 100px;
+}
+
+.timeline-point .point {
+  width: 24px;
+  height: 24px;
+  background-color: var(--tertiary);
+  border-radius: 50%;
+  margin: 0 auto 8px;
+  border: 4px solid var(--white);
+}
+
+.timeline-point .highlight {
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary);
+  box-shadow: 0 0 10px rgba(167, 134, 69, 0.5);
+}
+
+.timeline-point .date {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.timeline-point .description {
+  font-size: 12px;
+  color: var(--tertiary);
+  margin-top: 4px;
+}
+
+.timeline-event {
+  text-align: center;
+  background-color: var(--tertiary);
+  color: var(--white);
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.timeline-campaigns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.campaign {
+  flex: 1 1 250px;
+  text-align: center;
+  background-color: var(--secondary);
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.campaign .title {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.campaign p {
+  font-size: 14px;
+}
+
+.campaign-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.detail-card {
+  flex: 1 1 350px;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card h3 {
+  color: var(--primary);
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 8px;
+}
+
+.detail-card .label {
+  font-weight: bold;
+  color: var(--tertiary);
+  margin-bottom: 4px;
+}
+
+.supporting-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.evidence-card, .interaction-card {
+  flex: 1 1 350px;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.evidence-card h3, .interaction-card h3 {
+  color: var(--quaternary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.evidence-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.evidence-card li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.evidence-card .bullet {
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.interaction-card p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.interaction-card .interaction {
+  background-color: var(--secondary);
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--tertiary);
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>الجدول الزمني لحملة الإطلاق والأنشطة المرتبطة</h1>
+      <p>الماجدية - خطة إطلاق الهوية الجديدة والاستراتيجية 2025</p>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="summary">
+      <div class="summary-card">
+        <h2>فعالية الإطلاق</h2>
+        <div><span class="label">التاريخ: </span><span>13 ابريل 2025</span></div>
+        <div><span class="label">التكتيك: </span><span>نهج مستهدف</span></div>
+        <div><span class="label">الهدف: </span><span>إطلاق الهوية الجديدة والإعلان عن الاستراتيجية الجديدة</span></div>
+      </div>
+      <div class="summary-card">
+        <h2>حملة الإطلاق</h2>
+        <div><span class="label">التكتيك: </span><span>نهج شامل حملة 360 درجة</span></div>
+        <div><span class="label">الهدف: </span><span>زيادة الوعي بالعلامة التجارية، إعادة التموضع</span></div>
+        <div><span class="label">الجمهور المستهدف: </span><span>أصحاب المصلحة، الشركات، المستثمرون، المؤثرون، الإعلام</span></div>
+      </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline">
+      <h2>المسار الزمني لحملة الإطلاق</h2>
+      <div class="timeline-line"></div>
+      <div class="timeline-points">
+        <div class="timeline-point">
+          <div class="point"></div>
+          <div class="date">31 Dec</div>
+          <div class="description">موسمي</div>
+        </div>
+        <div class="timeline-point">
+          <div class="point"></div>
+          <div class="date">13 May</div>
+          <div class="description">تكتيكي</div>
+        </div>
+        <div class="timeline-point">
+          <div class="point"></div>
+          <div class="date">6 Apr</div>
+          <div class="description">بداية الإطلاق</div>
+        </div>
+        <div class="timeline-point">
+          <div class="point highlight"></div>
+          <div class="date highlight">13 Apr</div>
+          <div class="description">إطلاق الحملة</div>
+        </div>
+      </div>
+      <div class="timeline-event">
+        <strong>إطلاق العلامة التجارية الجديدة / الاستراتيجية بدء الإطلاق</strong>
+      </div>
+      <div class="timeline-campaigns">
+        <div class="campaign">
+          <div class="title">حملة تمهيدية</div>
+          <p>إطلاق حملة تمهيدية باستخدام سور المشاريع، مع تغييرات في حسابات التواصل الاجتماعي (التيزر)</p>
+        </div>
+        <div class="campaign">
+          <div class="title">حملة داخلية</div>
+          <p>إطلاق حملة داخلية لتثقيف الموظفين حول الهوية والاستراتيجية الجديدة</p>
+        </div>
+        <div class="campaign">
+          <div class="title">حملة اتصالات شاملة 360 درجة</div>
+          <p>نهج شامل: حملة 360 درجة لزيادة الوعي بالعلامة التجارية وإعادة التموضع</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Campaign Details Section -->
+    <div class="campaign-details">
+      <div class="detail-card">
+        <h3>حملة الإطلاق</h3>
+        <div><span class="label">التاريخ:</span> 13 ابريل 2025</div>
+        <div><span class="label">التكتيك:</span> نهج شامل: حملة 360 درجة</div>
+        <div><span class="label">الهدف:</span> زيادة الوعي بالعلامة التجارية وإعادة التموضع</div>
+        <div><span class="label">الجمهور المستهدف:</span> أصحاب المصلحة، الشركات، المستثمرون، المؤثرون، الإعلام</div>
+      </div>
+      <div class="detail-card">
+        <h3>حملة تمهيدية</h3>
+        <div><span class="label">التكتيك:</span> نهج مستهدف</div>
+        <div><span class="label">الوصف:</span> إطلاق حملة تمهيدية باستخدام سور المشاريع، مع تغييرات في حسابات التواصل الاجتماعي (التيزر)</div>
+        <div><span class="label">البدء:</span> 6 أبريل 2025</div>
+      </div>
+      <div class="detail-card">
+        <h3>حملة داخلية</h3>
+        <div><span class="label">التكتيك:</span> نهج مستهدف</div>
+        <div><span class="label">الوصف:</span> إطلاق حملة داخلية لتثقيف الموظفين حول الهوية والاستراتيجية الجديدة</div>
+        <div><span class="label">البدء:</span> 6 أبريل 2025</div>
+      </div>
+    </div>
+
+    <!-- Supporting Evidence and Interactions Section -->
+    <div class="supporting-evidence">
+      <div class="evidence-card">
+        <h3>البراهين الداعمة لرسائل العلامة</h3>
+        <ul>
+          <li><span class="bullet"></span>حفل اغلاق الصناديق</li>
+          <li><span class="bullet"></span>حملات المشاريع النوعية</li>
+          <li><span class="bullet"></span>مكانة</li>
+          <li><span class="bullet"></span>قرار</li>
+          <li><span class="bullet"></span>صرح</li>
+          <li><span class="bullet"></span>مجاز</li>
+          <li><span class="bullet"></span>حفل شراكتنا مع nhc</li>
+        </ul>
+      </div>
+      <div class="interaction-card">
+        <h3>التفاعل مع السكان</h3>
+        <p>سكان الماجدية لهم تأثير مباشر على المجتمعات التي نستهدفها. احتفل بالعيد معهم بطريقة مميزة!</p>
+        <div class="interaction">التفاعل مع اليوم الوطني</div>
+        <div class="interaction">عيد الأضحى / اليوم الوطني</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
